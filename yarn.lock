@@ -1097,7 +1097,7 @@
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.16.0.tgz#8c0a9435dfa7b3b1be76562f3070efb3f92637b4"
   integrity sha512-Fx+NpfOO0CpeYX2g9bkvX8O5qh9wrU1sOF4g8sft4Mu7z+qfe387YlyY8w8daDyDsKY5vUxM0yxkAYnbkRbZEw==
 
-"@typescript-eslint/eslint-plugin@^4.18.0":
+"@typescript-eslint/eslint-plugin@^4.1.1", "@typescript-eslint/eslint-plugin@^4.18.0":
   version "4.18.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.18.0.tgz#50fbce93211b5b690895d20ebec6fe8db48af1f6"
   integrity sha512-Lzkc/2+7EoH7+NjIWLS2lVuKKqbEmJhtXe3rmfA8cyiKnZm3IfLf51irnBcmow8Q/AptVV0XBZmBJKuUJTe6cQ==
@@ -1133,7 +1133,7 @@
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
-"@typescript-eslint/parser@^4.18.0":
+"@typescript-eslint/parser@^4.1.1", "@typescript-eslint/parser@^4.18.0":
   version "4.18.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-4.18.0.tgz#a211edb14a69fc5177054bec04c95b185b4dde21"
   integrity sha512-W3z5S0ZbecwX3PhJEAnq4mnjK5JJXvXUDBYIYGoweCyWyuvAKfGHvzmpUzgB5L4cRBb+cTu9U/ro66dx7dIimA==
@@ -1683,6 +1683,13 @@ aws4@^1.8.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
+
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
 
 babel-eslint@^10.0.1:
   version "10.1.0"
@@ -3726,7 +3733,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.13.3"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.3.tgz#e5598ad50174c1bc4e872301e82ac2cd97f90267"
   integrity sha512-DUgl6+HDzB0iEptNQEXLx/KhTmDb8tZUHSeLqpnjpknR70H0nC2t9N73BK6fN4hOvJ84pKlIQVQ4k5FFlBedKA==

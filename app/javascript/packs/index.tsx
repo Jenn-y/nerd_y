@@ -1,7 +1,8 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import 'bootstrap/dist/css/bootstrap.css'
 import App from './components/App'
-import Post1 from './components/Post1'
+import Blog from './components/Blog'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <BrowserRouter>
     <Switch>
     <Route exact path="/" component={App} />
-    <Route path="/post1" component={Post1} />
+    <Route path="/blog" component={Blog} />
   </Switch>
   </BrowserRouter>
   , document.body.appendChild(document.createElement('div')),
