@@ -17,12 +17,11 @@ module Api
       end
 
       def create
-        @post = Post.new(post_params)
-        if @post.save 
-          flash[:notice] = "Post was created successfully."
-          redirect_to @article
+        post = Post.new(post_params)
+        if post.save 
+          render json: post
         else
-          render 'new'
+          render json: post.errors
         end
       end
 
