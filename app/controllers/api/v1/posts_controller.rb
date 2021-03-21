@@ -26,17 +26,19 @@ module Api
       end
 
       def update
-        if @post.update(post_params)
-          flash[:notice] = "Post was updated successfully."
-          redirect_to @article
+        if post.update(post_params)
+          render json: post
         else
-          render 'edit'
+          render json: post.errors
         end
       end
 
       def destroy
-        @post.destroy
-        redirect_to posts_path
+        if post.destroy
+          head :no_content
+        else
+          render json: post.errors
+        end
       end
 
       private

@@ -41,6 +41,19 @@ const Posts = () => {
     setPost(Object.assign({}, post, {[e.target.name]: e.target.value}))
   }
 
+  const deletePost = (id) => {
+    const url = `/api/v1/posts/${id}`
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = token
+
+    axios.delete(url)
+      .then(response => {
+        setPosts([...posts])
+        window.location.reload()
+      })
+      .catch(() => console.log("An error occured while deleting the post"))
+  }
+
   return (
     <div>
       <div className="header">
@@ -55,7 +68,10 @@ const Posts = () => {
         </div>
         { posts.map(post => {
           return (
+            <>
             <Post key={post.id} post={post} />
+            <button type="button" onClick={() => deletePost(post.id)}>Delete Post</button>
+            </>
           )
         })}
       </div>
