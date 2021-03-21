@@ -1,7 +1,7 @@
 module Api
   module V1
     class PostsController < ApplicationController
-      before_action :set_post, only: [:show, :edit, :update, :destroy]
+      before_action :post, only: [:show, :update, :destroy]
 
       def index
         posts = Post.all
@@ -9,10 +9,11 @@ module Api
       end
 
       def show
-      end
-
-      def new
-        @post = Post.new
+        if post
+          render json: post
+        else
+          render json: post.errors 
+        end
       end
 
       def create
@@ -23,9 +24,6 @@ module Api
         else
           render 'new'
         end
-      end
-
-      def edit 
       end
 
       def update
@@ -44,8 +42,8 @@ module Api
 
       private
 
-      def set_post
-        @post = Post.find(params[:id])
+      def post
+        @post ||= Post.find(params[:id])
       end
 
       def post_params

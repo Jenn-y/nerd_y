@@ -6,7 +6,7 @@ const App = () => {
     <div className="welcome-container">
       <div>
         <h1>HOME</h1>
-        <Link to="/blog"><button>Read Posts</button></Link>
+        <Link to="/posts"><button>Read Posts</button></Link>
       </div>
       <div className="footer">
         <p>2021   |   Jenny</p>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Post from './Post'
 import axios from 'axios'
 
-const Blog = () => {
+const Posts = () => {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
@@ -37,4 +37,4 @@ const Blog = () => {
     </div>
   )
 }
-export default Blog
+export default Posts
