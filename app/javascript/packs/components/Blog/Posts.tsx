@@ -48,8 +48,11 @@ const Posts = () => {
 
     axios.delete(url)
       .then(response => {
-        setPosts([...posts])
-        window.location.reload()
+        const included = [...posts]
+        const index = included.findIndex( (data) => data.id == id )
+        included.splice(index, 1)
+
+        setPosts(included)
       })
       .catch(() => console.log("An error occured while deleting the post"))
   }

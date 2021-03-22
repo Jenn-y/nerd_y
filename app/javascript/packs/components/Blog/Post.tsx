@@ -7,6 +7,7 @@ const Post = ({post}) => {
       <h1>{post.title}</h1>
       <p>{post.description}</p>
       <button>{post.status}</button>
+      <Link to={`/post/${post.id}`} className="btn custom-button">View Post</Link>
     </div>
   )
 }
