@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+ html, body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  padding:0;
+  margin: 0;
+}
+
+textarea, select, input, button { 
+  outline: none; 
+}
+
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}

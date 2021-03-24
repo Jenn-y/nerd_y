@@ -1,0 +1,17 @@
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.row {
+  margin: 15em auto;
+}
+
+.card {
+  margin-bottom: 2em !important;
+  color: black;
+  text-shadow: none;
+}
+
