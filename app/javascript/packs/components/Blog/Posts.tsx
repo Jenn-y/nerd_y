@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Post from './Post'
-import PostForm from './PostForm'
 import axios from 'axios'
+import Header from '../Header'
+import Footer from '../Footer'
+import '../css/Posts.css'
 
 const Posts = () => {
   const [posts, setPosts] = useState([])
-  const [post, setPost] = useState({ title: '', description: '', status: 0 })
 
   useEffect(() => {
     const url = "/api/v1/posts"
@@ -21,67 +22,29 @@ const Posts = () => {
       .catch(() => console.log("An error occured while fetching the posts"))
   }, [])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    const url = "/api/v1/posts"
-    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = token
-
-    axios.post(url, post)
-      .then(response => {
-        setPosts([...posts, response.data])
-        setPost({ title: '', description: '', status: 0 })
-      })
-      .catch(() => console.log("An error occured while creating the post"))
-
-  }
-  
-  const handleChange = (e) => {
-    setPost(Object.assign({}, post, {[e.target.name]: e.target.value}))
-  }
-
-  const deletePost = (id) => {
-    const url = `/api/v1/posts/${id}`
-    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = token
-
-    axios.delete(url)
-      .then(response => {
-        const included = [...posts]
-        const index = included.findIndex( (data) => data.id == id )
-        included.splice(index, 1)
-
-        setPosts(included)
-      })
-      .catch(() => console.log("An error occured while deleting the post"))
-  }
-
   return (
-    <div>
-      <div className="header">
-        <div className="navigation">
-          <h3>Add new post!</h3>
-          <PostForm 
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            post={post}
-          />
-          <Link to="/"><button>Home</button></Link>
-        </div>
+    <>
+      <div className="heading">
+        <Header />
+      </div>
+      <div className="jumbotron">
+        <Link to="/newpost" className="lead">
+          <button type="button" className="btn-new">New Post</button>
+        </Link>
+      </div>
+      <div className="row card-deck">
         { posts.map(post => {
           return (
             <>
             <Post key={post.id} post={post} />
-            <button type="button" onClick={() => deletePost(post.id)}>Delete Post</button>
             </>
           )
         })}
       </div>
       <div className="footer">
-        <p>2021   |   Jenny</p>
+        <Footer />
       </div>
-    </div>
+    </>
   )
 }
 export default Posts
