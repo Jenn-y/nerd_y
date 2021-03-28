@@ -1,13 +1,24 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import ReactMarkdown from 'react-markdown';
+import '../css/PostCard.css'
 
-const Post = ({post}) => {
+const Post = (post) => {
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <p>{post.description}</p>
-      <button>{post.status}</button>
-      <Link to={`/post/${post.id}`} className="btn custom-button">View Post</Link>
+    <div className="col-lg-4 col-md-6 mb-2-6">
+      <article className="card card-style2">
+        <img className="card-img-top rounded-top" src={post.post.thumb_image} alt="main image" />
+        <div className="card-body">
+          <div className="flex-container">
+            <h3 className="card-title">{post.post.title}</h3>
+            <button type="button" className="btn btn-outline-warning">{post.post.status}</button>
+          </div>
+          <p className="card-text"><ReactMarkdown source={post.post.description} /></p>
+        </div>
+        <div className="card-footer">
+          <Link to={`/post/${post.post.id}`}><button type="button" className="btn btn-primary btn-lg btn-block">Read More</button></Link>
+        </div>
+      </article>
     </div>
   )
 }

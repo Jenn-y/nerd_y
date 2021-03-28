@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import ReactMarkdown from 'react-markdown';
 import PostForm from './PostForm'
+import Header from '../Header'
+import Footer from '../Footer'
 
 const Post = (props) => {
-  const [post, setPost] = useState({ title: '', description: '', status: 0 })
+  const [post, setPost] = useState({ title: '', description: '', status: 0, main_image: "https://via.placeholder.com/500x350" })
   const [editing, setEditing] = useState(false)
 
   useEffect(() => {
@@ -46,13 +49,31 @@ const Post = (props) => {
   }
 
   const changeStatus = (e) => {
-    setPost({title: post.title, description: post.description, status: e})
+    setPost({title: post.title, description: post.description, status: e, main_image: "https://via.placeholder.com/500x350" })
+  }
+
+  const deletePost = () => {
+    const id = props.match.params.id
+    const url = `/api/v1/posts/${id}`
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = token
+
+    axios.delete(url)
+      .then(response => {
+        location.replace(`/posts`)
+      })
+      .catch(() => console.log("An error occured while deleting the post"))
   }
 
   return (
     <div>
+      <div>
+        <Header />
+      </div>
+      <button type="button" onClick={() => deletePost()}>Delete Post</button>
+      <img src={post.main_image} alt="main image" />
       <h1>{post.title}</h1> 
-      <p>{post.description}</p> 
+      <p><ReactMarkdown source={post.description} /></p> 
       <button>{post.status}</button>
       {
         editing ? <PostForm 
@@ -62,6 +83,7 @@ const Post = (props) => {
                     post={post} 
                   /> : <button onClick={startEdit}>Edit Post</button>
       }
+      <Footer />
     </div>
   )
 }
