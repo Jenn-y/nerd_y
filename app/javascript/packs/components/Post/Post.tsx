@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import PostForm from './PostForm'
 import Header from '../Header'
 import Footer from '../Footer'
+import '../css/PostView.css'
 
 const Post = (props) => {
   const [post, setPost] = useState({ title: '', description: '', status: 0, main_image: "https://via.placeholder.com/500x350" })
@@ -66,22 +67,26 @@ const Post = (props) => {
   }
 
   return (
-    <div>
+    <div className="wrapper">
       <div>
         <Header />
       </div>
-      <button type="button" onClick={() => deletePost()}>Delete Post</button>
-      <img src={post.main_image} alt="main image" />
-      <h1>{post.title}</h1> 
-      <p><ReactMarkdown source={post.description} /></p> 
-      <button>{post.status}</button>
+      <div className="space"></div>
       {
         editing ? <PostForm 
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
                     changeStatus={changeStatus}
                     post={post} 
-                  /> : <button onClick={startEdit}>Edit Post</button>
+                  /> : 
+                  <div>
+                    <img src="https://via.placeholder.com/500x350" alt="main image" />
+                    <h1 className="title">{post.title}</h1> 
+                    <p className="description"><ReactMarkdown source={post.description} /></p> 
+                    <button className="btn btn-warning">{post.status}</button>
+                    <button type="button" onClick={() => deletePost()} className="btn btn-danger">Delete Post</button>
+                    <button onClick={startEdit} className="btn btn-primary">Edit Post</button>
+                  </div>
       }
       <Footer />
     </div>
