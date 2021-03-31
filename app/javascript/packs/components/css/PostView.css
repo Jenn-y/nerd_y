@@ -1,6 +1,7 @@
 .wrapper {
   width: 70%;
   margin: auto;
+  padding-top: 20px;
 }
 
 .space {
@@ -8,7 +9,7 @@
   height: 100px;
 }
 
-.title {
+.wrapper h1, .wrapper h2 {
   text-align: center;
   margin: 20px 0 30px;
 }
@@ -18,11 +19,22 @@
 }
 
 button {
-  margin-right: 10px;
+  margin: 20px 10px 20px 0;
 }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  right: 43%;
+.wrapper .post {
+  margin-bottom: 70px;
+}
+
+.edit-form {
+  width: 100%;
+}
+
+.image-div {
+  display: flex;
+  justify-content: center;
+}
+
+body > div {
+  width: 100%;
 }

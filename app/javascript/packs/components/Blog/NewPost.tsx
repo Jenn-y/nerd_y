@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link, Redirect } from 'react-router-dom'
 import PostForm from './PostForm'
 import axios from 'axios'
+import Header from '../Header'
+import '../css/PostView.css'
 
 const NewPost = () => {
   const [post, setPost] = useState({ title: '', description: '', status: 0 })
@@ -30,8 +31,10 @@ const NewPost = () => {
   }
 
   return (
-    <div>
-      <h3>Add new post!</h3>
+    <div className="wrapper">
+      <Header />
+      <div className="space"></div>
+      <h2>Add New Post</h2>
       <PostForm 
         handleSubmit={handleSubmit}
         handleChange={handleChange}

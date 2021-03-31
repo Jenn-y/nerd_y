@@ -7,7 +7,7 @@ import Footer from '../Footer'
 import '../css/PostView.css'
 
 const Post = (props) => {
-  const [post, setPost] = useState({ title: '', description: '', status: 0, main_image: "https://via.placeholder.com/500x350" })
+  const [post, setPost] = useState({ title: '', description: '', status: "draft", main_image: "https://via.placeholder.com/900x350" })
   const [editing, setEditing] = useState(false)
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Post = (props) => {
   }
 
   const changeStatus = (e) => {
-    setPost({title: post.title, description: post.description, status: e, main_image: "https://via.placeholder.com/500x350" })
+    setPost({title: post.title, description: post.description, status: e, main_image: "https://via.placeholder.com/900x350" })
   }
 
   const deletePost = () => {
@@ -77,18 +77,22 @@ const Post = (props) => {
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
                     changeStatus={changeStatus}
-                    post={post} 
+                    post={post}
                   /> : 
-                  <div>
-                    <img src="https://via.placeholder.com/500x350" alt="main image" />
+                  <div className="post">
+                    <div className="image-div">
+                      <img src={post.main_image} alt="main image" />
+                    </div>
+                    <button className={"btn btn-" + (post.status === 'draft' ? "warning" : "success")}>{post.status}</button>
+                    <button onClick={startEdit} className="btn btn-primary">Edit Post</button>
+                    <button type="button" onClick={() => deletePost()} className="btn btn-danger">Delete Post</button>
                     <h1 className="title">{post.title}</h1> 
                     <p className="description"><ReactMarkdown source={post.description} /></p> 
-                    <button className="btn btn-warning">{post.status}</button>
-                    <button type="button" onClick={() => deletePost()} className="btn btn-danger">Delete Post</button>
-                    <button onClick={startEdit} className="btn btn-primary">Edit Post</button>
                   </div>
       }
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </div>
   )
 }
