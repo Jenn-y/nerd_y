@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_03_17_192956) do
     t.string "title"
     t.text "description"
     t.integer "status", default: 0
-    t.text "main_image", default: "https://via.placeholder.com/500x350"
+    t.text "main_image", default: "https://via.placeholder.com/900x350"
     t.text "thumb_image", default: "https://via.placeholder.com/250x150"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
