@@ -16,7 +16,7 @@
 }
 
 .fadeout {
-  height:100px;
+  height:150px;
   width:100%;
   position: absolute;
   left: 0;
@@ -30,7 +30,23 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
   }
 
+  #custom-card-body {
+    padding: 1.25rem 1.25rem 0 1.25rem;
+    flex: 1 1 auto;
+    min-height: 1px;
+  }
+  
   .card-text {
     height: 150px;
     overflow: hidden;
+  }
+
+  #custom-card-footer {
+    border-top: 0;
+    padding: 1rem 2rem 0 1rem;
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  #custom-card-footer a {
+    text-decoration: none;
   }
