@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -7,8 +7,8 @@ const Header = () => {
       <div className="inner">
         <h3 className="masthead-brand">Nerdy</h3>
         <nav className="nav nav-masthead justify-content-center">
-          <Link to="/" className="nav-link active">Home</Link>
-          <Link to="/posts" className="nav-link">Posts</Link>
+          <NavLink to="/" exact className="nav-link" activeClassName="active">Home</NavLink>
+          <NavLink to="/posts" className="nav-link" activeClassName="active">Posts</NavLink>
           <a className="nav-link" href="#">Contact</a>
         </nav>
       </div>
