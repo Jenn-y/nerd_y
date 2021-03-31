@@ -4,7 +4,7 @@ module Api
       before_action :post, only: [:show, :update, :destroy]
 
       def index
-        posts = Post.all
+        posts = Post.all.order("updated_at DESC")
         render json: posts
       end
 

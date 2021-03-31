@@ -7,7 +7,6 @@ import NewPost from './components/Blog/NewPost'
 import Post from './components/Post/Post'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <BrowserRouter>
